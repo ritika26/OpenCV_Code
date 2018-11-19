@@ -1,0 +1,112 @@
+Hello Everyone,Good Morning
+Today I am going to walkthrough the Handwritten character recognition for the Physical Order Ticket
+
+
+
+Traditional OCR engine fail to give good results since they do not know what they are reading.substainal amount of error is found in the extracted data. These errors usally needs manual fixing which is time consuming
+AI based  OCR solution  makke use of Machine Learning Algorithm and  it dramatically improves the accuracy and fine tunes the extraction results helping you to save on cost and time in processing 
+
+
+In TS for Canada market, we review the handwritten physical client order ticket for teh prseence of various parameters like time stamp, account,client Id, quantity and price to identify
+market abuse or issue sthat does not appear to be in compliant with regulatory rules.
+
+
+i have downloaded NIST dataset of handwritten character and digits to create a dictionary
+
+These are the below  stages in ICR:
+1)Image Acqusittion:We will physical order ticket which contains handwritten digits and characters 
+
+Image is converted into grayscale
+
+Segmentation: Pre-processing the words into individual digits and characters
+
+Feature extraction: determine all the features 
+
+fianlly classifying and recognizing the digits and charactesr
+
+
+
+Preprocessing steps:preprcocessing itself is broken into smaller tasks such as noise removal,Binarization,Edge detection and contour detection
+
+1)Read all the images
+2)convert all the images into grayscale
+3)Noise removal from the images. since each pixel in the image is surrounded by its pixel intensity.this mixture of pixel in negihborhood become blurred pixel
+4) Binarization of the image: convert the grayscale image into binary image where the pixel is either black or white
+5) Edge detection to find the points in the image  where the brightness of pixel intensities changes distinctly.
+6)contour detection:curve of points with no gap in the curve.
+7) Segmentation: Pre-processing the words into individual digits and characters
+8) Feature extraction: determine all the features 
+
+
+
+##we will repeat this process for each order ticket samples to create dictionary of handwritten digits and characters.
+
+we will resize all the extracted digits and characters with the same size of NIST dataset.
+Now merge all the extracted digits and characters with NIST dataset.
+
+converted all the images into arrays
+created the labels for each images
+
+
+Image Classification Pipeline:
+
+Now I have a dataset of inages.We will divide the dataset into training and testing
+
+Training set is used by our classifier to learn what each category look like by making predictions on the input data and then corrected when predictions are wrong.
+test set is used in evaluating the performance of the classifier.
+
+5 steps in the neural network model life-cycle in Keras that we are going to look at.
+
+Define Network.
+Compile Network.
+Fit Network.
+Evaluate Network.
+Make Predictions.
+
+
+1)The first step is to define your neural network.Neural networks are defined in Keras as a sequence of layers. The container for these layers is the Sequential class.
+The first step is to create an instance of the Sequential class. Then you can create your layers and add them in the order that they should be connected.
+
+2) Once we have defined our network, we must compile it.
+
+model.compile(optimizer='sgd', loss='mse')
+For example, below are some standard loss functions for different predictive model types:
+
+Regression: Mean Squared Error or ‘mse‘.
+Binary Classification (2 class): Logarithmic Loss, also called cross entropy or ‘binary_crossentropy‘.
+Multiclass Classification (>2 class): Multiclass Logarithmic Loss or ‘categorical_crossentropy‘.
+
+3) Once the network is compiled, it can be fit, which means adapt the weights on a training dataset.Fitting the network requires the training data to be specified, both a matrix of input patterns X and an array of matching output patterns y.
+
+The network is trained using the backpropagation algorithm and optimized according to the optimization algorithm and loss function specified when compiling the model.
+
+4) Once the network is trained, We can evaluate the performance of the network on a separate dataset, unseen during testing.
+
+5) Finally, once we are satisfied with the performance of our fit model, we can use it to make predictions on new data.
+
+
+
+
+
+Traditional OCR engine fail to give good results since they do not know what they are reading.substainal amount of error is found in the extracted data. These errors usally needs manual fixing which is time consuming
+AI based  OCR solution  makke use of Machine Learning Algorithm and  it dramatically improves the accuracy and fine tunes the extraction results helping you to save on cost and time in processing 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
